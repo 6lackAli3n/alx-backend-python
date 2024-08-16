@@ -6,6 +6,7 @@ Module for a floor function with type annotations.
 
 import math
 
+
 def floor(n: float) -> int:
     """
     Returns the floor of a float number.

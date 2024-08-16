@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Module for converting a float to its string representation with type annotations.
+Module for converting a float to its
+string representation with type annotations.
 """
 
 
