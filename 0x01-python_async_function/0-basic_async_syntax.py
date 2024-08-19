@@ -4,8 +4,10 @@ Module 0-basic_async_syntax
 Defines an asynchronous coroutine that waits for a random delay.
 """
 
+
 import asyncio
 import random
+
 
 async def wait_random(max_delay: int = 10) -> float:
     """
