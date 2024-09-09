@@ -74,6 +74,19 @@ class TestGithubOrgClient(unittest.TestCase):
             # Ensure get_json was called once with the mocked URL
             mock_get_json.assert_called_once_with("https://api.github.com/orgs/test-org/repos")
 
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False),
+        ({"license": None}, "my_license", False),  # Edge case where license is None
+        ({}, "my_license", False),  # Edge case where license is missing
+        ])
+
+    def test_has_license(self, repo, license_key, expected):
+        """Test the has_license method with different repo data and license keys"""
+        client = GithubOrgClient("test-org")
+        result = client.has_license(repo, license_key)
+        self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main()
