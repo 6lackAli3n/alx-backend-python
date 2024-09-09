@@ -120,13 +120,16 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def test_public_repos(self):
         """Test GithubOrgClient.public_repos method"""
         client = GithubOrgClient("test-org")
-        self.assertEqual(client.public_repos(), self.expected_repos)
+        result = client.public_repos()
+        self.assertEqual(result, self.expected_repos)
         self.mock_get.assert_called()
 
     def test_public_repos_with_license(self):
         """Test GithubOrgClient.public_repos method with license filtering"""
         client = GithubOrgClient("test-org")
-        self.assertEqual(client.public_repos(license="apache-2.0"), self.apache2_repos)
+        result = client.public_repos(license="apache-2.0")
+        self.assertEqual(result, self.apache2_repos)
+        self.mock_get.assert_called()
 
 
 if __name__ == "__main__":
